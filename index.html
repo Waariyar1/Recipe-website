@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Website</title>
+
+  <!-- Bootstrap CSS CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/js/bootstrap.js">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/js/bootstrap.bundle.js">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-dark text-white py-3 shadow sticky-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="#" class="navbar-brand text-white fs-3 fw-bold d-flex align-items-center">
+        <i class="fas fa-utensils me-2"></i>RecipeMaster
+      </a>
+
+      <nav class="d-none d-lg-block">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link text-white hover-effect" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white hover-effect" href="#">Recipes</a></li>
+          <li class="nav-item"><a class="nav-link text-white hover-effect" href="#">Categories</a></li>
+          <li class="nav-item"><a class="nav-link text-white hover-effect" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link text-white hover-effect" href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="d-flex gap-2 align-items-center">
+        <div id="google_translate_element" class="d-none d-md-block"></div>
+        <a href="#" class="btn btn-outline-light rounded-pill px-3 d-none d-md-block">Login</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+          <i class="fas fa-bars text-white"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">RecipeMaster</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item mb-3"><a class="nav-link text-white" href="#">Home</a></li>
+        <li class="nav-item mb-3"><a class="nav-link text-white" href="#">Recipes</a></li>
+        <li class="nav-item mb-3"><a class="nav-link text-white" href="#">Categories</a></li>
+        <li class="nav-item mb-3"><a class="nav-link text-white" href="#">About</a></li>
+        <li class="nav-item mb-3"><a class="nav-link text-white" href="#">Contact</a></li>
+        <li class="nav-item mt-3">
+          <a href="#" class="btn btn-outline-light w-100">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section position-relative">
+    <div class="hero-overlay"></div>
+    <div class="container position-relative z-2 py-5">
+      <div class="row align-items-center min-vh-75">
+        <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-duration="1000">
+          <h1 class="display-3 fw-bold text-white mb-4">Discover Delicious Recipes</h1>
+          <p class="lead text-white-75 mb-4">Explore a world of flavors with our curated collection of recipes from around the globe.</p>
+          <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+            <a href="#" class="btn btn-danger btn-lg rounded-pill px-4">Get Started</a>
+            <a href="#recipes" class="btn btn-outline-light btn-lg rounded-pill px-4">Browse Recipes</a>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000">
+          <img src="./bg.png" class="img-fluid rounded-4 shadow-lg floating-img" alt="Food collage" onerror="this.src='https://placehold.co/600x400/e74c3c/ffffff?text=Delicious+Recipes'">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Food Categories -->
+  <section class="py-5 bg-dark text-white">
+    <div class="container py-4">
+      <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Popular Categories</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="100">
+          <div class="category-card text-center bg-white text-dark">
+            <div class="category-icon bg-danger bg-opacity-10 text-danger mb-3">
+              <i class="fas fa-drumstick-bite"></i>
+            </div>
+            <h5>Meat</h5>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="200">
+          <div class="category-card text-center bg-white text-dark">
+            <div class="category-icon bg-success bg-opacity-10 text-success mb-3">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h5>Vegan</h5>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="300">
+          <div class="category-card text-center bg-white text-dark">
+            <div class="category-icon bg-warning bg-opacity-10 text-warning mb-3">
+              <i class="fas fa-cheese"></i>
+            </div>
+            <h5>Dairy</h5>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="400">
+          <div class="category-card text-center bg-white text-dark">
+            <div class="category-icon bg-info bg-opacity-10 text-info mb-3">
+              <i class="fas fa-fish"></i>
+            </div>
+            <h5>Seafood</h5>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="500">
+          <div class="category-card text-center bg-white text-dark">
+            <div class="category-icon bg-primary bg-opacity-10 text-primary mb-3">
+              <i class="fas fa-bread-slice"></i>
+            </div>
+            <h5>Bakery</h5>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="600">
+          <div class="category-card text-center bg-white text-dark">
+            <div class="category-icon bg-secondary bg-opacity-10 text-secondary mb-3">
+              <i class="fas fa-ice-cream"></i>
+            </div>
+            <h5>Desserts</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Recipes -->
+  <section class="py-5" id="recipes">
+    <div class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="fw-bold mb-0" data-aos="fade-right">Featured Recipes</h2>
+        <a href="all-recipes.html" class="btn btn-outline-danger rounded-pill" data-aos="fade-left">View All <i class="fas fa-arrow-right ms-2"></i></a>
+      </div>
+      
+      <div class="row g-4">
+        <!-- First Row -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card recipe-card border-0 shadow-sm h-100 overflow-hidden">
+            <div class="position-relative recipe-img-container">
+              <img src="./recipe img/Pasta.png" class="card-img-top" alt="Spicy Pasta">
+              <div class="recipe-overlay">
+                <div class="recipe-tags">
+                  <span class="badge text-bg-danger">Spicy</span>
+                  <span class="badge text-bg-success">Easy</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Spicy Pasta</h5>
+                <div class="recipe-rating text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+              <p class="card-text flex-grow-1">A delicious and spicy pasta dish that's quick to make and sure to impress your guests.</p>
+              <div class="recipe-meta d-flex justify-content-between text-muted mt-3">
+                <span><i class="far fa-clock me-1"></i> 25 mins</span>
+                <span><i class="fas fa-fire me-1"></i> 320 cal</span>
+                <span><i class="fas fa-user me-1"></i> 4 servings</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="#" class="btn btn-outline-danger w-100">View Recipe</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card recipe-card border-0 shadow-sm h-100 overflow-hidden">
+            <div class="position-relative recipe-img-container">
+              <img src="./recipe img/cake.png" class="card-img-top" alt="Chocolate Cake">
+              <div class="recipe-overlay">
+                <div class="recipe-tags">
+                  <span class="badge text-bg-primary">Dessert</span>
+                  <span class="badge text-bg-warning">Popular</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Chocolate Cake</h5>
+                <div class="recipe-rating text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="card-text flex-grow-1">Indulge in this rich, moist chocolate cake that's perfect for any celebration or dessert craving.</p>
+              <div class="recipe-meta d-flex justify-content-between text-muted mt-3">
+                <span><i class="far fa-clock me-1"></i> 60 mins</span>
+                <span><i class="fas fa-fire me-1"></i> 450 cal</span>
+                <span><i class="fas fa-user me-1"></i> 8 servings</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="cake.html" class="btn btn-outline-danger w-100">View Recipe</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card recipe-card border-0 shadow-sm h-100 overflow-hidden">
+            <div class="position-relative recipe-img-container">
+              <img src="./recipe img/Grilled Salmon.png" class="card-img-top" alt="Grilled Salmon">
+              <div class="recipe-overlay">
+                <div class="recipe-tags">
+                  <span class="badge text-bg-info">Seafood</span>
+                  <span class="badge text-bg-success">Healthy</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Grilled Salmon</h5>
+                <div class="recipe-rating text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <p class="card-text flex-grow-1">Healthy and flavorful grilled salmon with lemon and herbs, perfect for a nutritious dinner.</p>
+              <div class="recipe-meta d-flex justify-content-between text-muted mt-3">
+                <span><i class="far fa-clock me-1"></i> 20 mins</span>
+                <span><i class="fas fa-fire me-1"></i> 280 cal</span>
+                <span><i class="fas fa-user me-1"></i> 2 servings</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="#" class="btn btn-outline-danger w-100">View Recipe</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card recipe-card border-0 shadow-sm h-100 overflow-hidden">
+            <div class="position-relative recipe-img-container">
+              <img src="./recipe img/rec-img/vegitable curry.png" class="card-img-top" alt="Vegetable Curry">
+              <div class="recipe-overlay">
+                <div class="recipe-tags">
+                  <span class="badge text-bg-success">Vegetarian</span>
+                  <span class="badge text-bg-danger">Spicy</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Vegetable Curry</h5>
+                <div class="recipe-rating text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <p class="card-text flex-grow-1">A flavorful and aromatic vegetable curry with coconut milk and fragrant spices.</p>
+              <div class="recipe-meta d-flex justify-content-between text-muted mt-3">
+                <span><i class="far fa-clock me-1"></i> 35 mins</span>
+                <span><i class="fas fa-fire me-1"></i> 280 cal</span>
+                <span><i class="fas fa-user me-1"></i> 4 servings</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="#" class="btn btn-outline-danger w-100">View Recipe</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card recipe-card border-0 shadow-sm h-100 overflow-hidden">
+            <div class="position-relative recipe-img-container">
+              <img src="./recipe img/rec-img/avocado-toast.png" class="card-img-top" alt="Avocado Toast">
+              <div class="recipe-overlay">
+                <div class="recipe-tags">
+                  <span class="badge text-bg-success">Vegan</span>
+                  <span class="badge text-bg-warning">Breakfast</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Avocado Toast</h5>
+                <div class="recipe-rating text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+              <p class="card-text flex-grow-1">Creamy avocado spread on toasted sourdough bread, topped with cherry tomatoes and microgreens.</p>
+              <div class="recipe-meta d-flex justify-content-between text-muted mt-3">
+                <span><i class="far fa-clock me-1"></i> 10 mins</span>
+                <span><i class="fas fa-fire me-1"></i> 220 cal</span>
+                <span><i class="fas fa-user me-1"></i> 2 servings</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="#" class="btn btn-outline-danger w-100">View Recipe</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card recipe-card border-0 shadow-sm h-100 overflow-hidden">
+            <div class="position-relative recipe-img-container">
+              <img src="./recipe img/rec-img/chicken-stir-fry.png" class="card-img-top" alt="Chicken Stir Fry">
+              <div class="recipe-overlay">
+                <div class="recipe-tags">
+                  <span class="badge text-bg-danger">Non-Veg</span>
+                  <span class="badge text-bg-success">Quick</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Chicken Stir Fry</h5>
+                <div class="recipe-rating text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="card-text flex-grow-1">A quick and delicious chicken stir fry with colorful vegetables and a savory sauce.</p>
+              <div class="recipe-meta d-flex justify-content-between text-muted mt-3">
+                <span><i class="far fa-clock me-1"></i> 25 mins</span>
+                <span><i class="fas fa-fire me-1"></i> 310 cal</span>
+                <span><i class="fas fa-user me-1"></i> 4 servings</span>
+              </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+              <a href="#" class="btn btn-outline-danger w-100">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="all-recipes.html" class="btn btn-danger btn-lg rounded-pill px-4 py-2">Explore All Recipes <i class="fas fa-arrow-right ms-2"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="newsletter-container bg-white p-4 p-md-5 rounded-4 shadow-sm">
+            <h2 class="fw-bold mb-3">Get Weekly Recipe Updates</h2>
+            <p class="text-muted mb-4">Subscribe to our newsletter and never miss a delicious recipe again!</p>
+            <form class="newsletter-form">
+              <div class="input-group mb-3">
+                <input type="email" class="form-control form-control-lg" placeholder="Your email address" aria-label="Email">
+                <button class="btn btn-danger px-4" type="submit">Subscribe</button>
+              </div>
+              <div class="form-check text-start">
+                <input class="form-check-input" type="checkbox" value="" id="newsletterCheck">
+                <label class="form-check-label small text-muted" for="newsletterCheck">
+                  I agree to receive weekly recipe updates and cooking tips.
+                </label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h4 class="mb-4 fw-bold d-flex align-items-center">
+            <i class="fas fa-utensils me-2"></i>RecipeMaster
+          </h4>
+          <p class="mb-3">Explore a world of flavors with our curated collection of recipes from passionate chefs around the globe.</p>
+          <div class="d-flex gap-3 fs-5 mb-4">
+            <a href="#" class="text-light"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="text-light"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2 mb-4">
+          <h5 class="mb-4 fw-bold">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Home</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Recipes</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Categories</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">About Us</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-2 mb-4">
+          <h5 class="mb-4 fw-bold">Categories</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Vegetarian</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Non-Vegetarian</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Vegan</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Gluten Free</a></li>
+            <li class="mb-2"><a href="#" class="text-light text-decoration-none">Quick & Easy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-4 mb-4">
+          <h5 class="mb-4 fw-bold">Contact Us</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex">
+              <i class="fas fa-map-marker-alt me-2 mt-1"></i>
+              <span>123 Recipe Street, Flavor City, FC 12345</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-envelope me-2 mt-1"></i>
+              <span>contact@recipemaster.com</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-phone me-2 mt-1"></i>
+              <span>+1 (555) 123-4567</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center py-3 border-top border-secondary mt-4">
+        <p class="mb-0">&copy; 2025 RecipeMaster. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn btn-danger btn-icon"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- AOS Animation Library JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('all-recipes.html')
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const recipeCards = doc.querySelectorAll('.card');
+          const featuredSection = document.getElementById('featured-recipes');
+          let output = '<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">';
+
+          recipeCards.forEach((card, index) => {
+            if (index < 6) { // Display only the first 6 recipes
+              const imgSrc = card.querySelector('img').src;
+              const title = card.querySelector('.card-title').textContent;
+              const description = card.querySelector('.card-text').textContent;
+              const cookingTime = card.querySelector('.fa-clock').nextSibling.textContent.trim();
+
+              output += `
+                <div class="col">
+                  <div class="card h-100 shadow">
+                    <img src="${imgSrc}" class="card-img-top" alt="${title}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title">${title}</h5>
+                      <p class="card-text flex-grow-1">${description}</p>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <span><i class="fas fa-clock"></i> ${cookingTime}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+          });
+
+          output += '</div>';
+          featuredSection.innerHTML = output;
+        })
+        .catch(error => console.error('Error fetching recipes:', error));
+    });
+  </script>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-light">
+          <form>
+            <div class="mt-3 text-center">
+              <button type="button" class="btn btn-outline-danger w-100 mb-3">
+                <i class="fab fa-google me-2"></i>Login with Google
+              </button>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter your username">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            </div>
+            <div class="d-flex justify-content-between">
+              <a href="#" class="text-decoration-none">Forgot Password?</a>
+              <a href="#" class="text-decoration-none">Register</a>
+            </div>
+            <div class="mt-3">
+              <button type="button" class="btn btn-primary w-100">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginButton = document.querySelector('.btn-outline-light');
+      loginButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+        document.body.classList.add('modal-open');
+      });
+    });
+  </script>
+
+  <style>
+    .modal-open .container, .modal-open .hero-section {
+      filter: blur(5px);
+    }
+  </style>
+</body>
+</html>

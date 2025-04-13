@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Recipes - Tasty Delights</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Custom Recipe Card Styles */
+    .recipe-card-header {
+      background-color: #343a40;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-img-top {
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .btn-primary {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-primary:hover {
+      background-color: #c82333;
+      border-color: #c82333;
+    }
+
+    /* Custom Footer */
+    .footer {
+      background-color: #343a40;
+      padding: 30px 0;
+      margin-top: 50px;
+      border-top: 1px solid #e7e7e7;
+      color: #ffffff;
+    }
+
+    .footer a {
+      color: #ffffff;
+    }
+
+    .footer a:hover {
+      color: #c82333;
+    }
+
+    .social-icons a {
+      color: #dc3545;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-utensils text-danger me-2"></i>
+        <span class="fw-bold">Tasty Delights</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="all-recipes.html">All Recipes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex ms-lg-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Recipe...">
+            <button class="btn btn-danger" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="bg-light py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="recipe-card-header">Our Delicious Recipes</h1>
+          <p class="lead">Enjoy our best recipes to share with your family and friends. Here you will find recipes suitable for every occasion.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Title -->
+  <section class="bg-danger text-white py-5">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">All Recipes</h1>
+      <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Explore our collection of delicious recipes from around the world</p>
+      
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-md-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search recipes..." aria-label="Search recipes">
+            <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="py-4 bg-light border-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="d-flex align-items-center">
+            <span class="me-3">Filter By:</span>
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                Category
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All Categories</a></li>
+                <li><a class="dropdown-item" href="#">Vegetarian</a></li>
+                <li><a class="dropdown-item" href="#">Non-Vegetarian</a></li>
+                <li><a class="dropdown-item" href="#">Vegan</a></li>
+                <li><a class="dropdown-item" href="#">Gluten-Free</a></li>
+                <li><a class="dropdown-item" href="#">Desserts</a></li>
+                <li><a class="dropdown-item" href="#">Breakfast</a></li>
+              </ul>
+            </div>
+            <div class="btn-group me-2">
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                Time
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All</a></li>
+                <li><a class="dropdown-item" href="#">Under 15 minutes</a></li>
+                <li><a class="dropdown-item" href="#">15-30 minutes</a></li>
+                <li><a class="dropdown-item" href="#">30-60 minutes</a></li>
+                <li><a class="dropdown-item" href="#">Over 60 minutes</a></li>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                Rating
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All Ratings</a></li>
+                <li><a class="dropdown-item" href="#">5 Stars</a></li>
+                <li><a class="dropdown-item" href="#">4+ Stars</a></li>
+                <li><a class="dropdown-item" href="#">3+ Stars</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="d-flex align-items-center justify-content-md-end">
+            <span class="me-3">Sort By:</span>
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                Most Popular
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Most Popular</a></li>
+                <li><a class="dropdown-item" href="#">Newest</a></li>
+                <li><a class="dropdown-item" href="#">Oldest</a></li>
+                <li><a class="dropdown-item" href="#">A-Z</a></li>
+                <li><a class="dropdown-item" href="#">Z-A</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipes Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Recipe Card 1 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/pasta.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Spicy Pasta</h5>
+              <p class="card-text flex-grow-1">A spicy and delicious pasta that will tantalize your taste buds. Make your day exciting with this fiery dish!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 30 minutes</span>
+                <span><i class="fas fa-fire"></i> Medium spicy</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 2 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/chocolate-cake.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Chocolate Cake</h5>
+              <p class="card-text flex-grow-1">A soft and luscious chocolate cake that melts in every bite. A perfect dessert that everyone will love!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 60 minutes</span>
+                <span><i class="fas fa-leaf"></i> Vegan</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 3 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/garilled-salmon.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Grilled Salmon</h5>
+              <p class="card-text flex-grow-1">Healthy and flavorful grilled salmon with fresh herbs and lemon. Enjoy a healthy meal!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 25 minutes</span>
+                <span><i class="fas fa-fish"></i> Seafood</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 4 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/vegitable curry.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Vegetable Curry</h5>
+              <p class="card-text flex-grow-1">A spicy and nutritious vegetable curry full of traditional flavors. Serve it with hot rice or naan!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 40 minutes</span>
+                <span><i class="fas fa-leaf"></i> Vegan</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 5 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/avocado-toast.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Avocado Toast</h5>
+              <p class="card-text flex-grow-1">Healthy and tasty avocado toast perfect for breakfast or lunch. A quick and easy delicious dish!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 10 minutes</span>
+                <span><i class="fas fa-leaf"></i> Vegan</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 6 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/chicken-stir-fry.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Chicken Stir Fry</h5>
+              <p class="card-text flex-grow-1">A quick-cooking chicken stir fry with fresh vegetables and a delicious sauce. A nutritious meal ready in no time!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 20 minutes</span>
+                <span><i class="fas fa-drumstick-bite"></i> Non-Veg</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 7 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/blueberry-pancakes.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Blueberry Pancakes</h5>
+              <p class="card-text flex-grow-1">Soft and fluffy blueberry pancakes perfect for starting the morning. Serve with maple syrup!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 15 minutes</span>
+                <span><i class="fas fa-leaf"></i> Vegan</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recipe Card 8 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./recipe img/rec-img/Mashroom risotto.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Mushroom Risotto</h5>
+              <p class="card-text flex-grow-1">Creamy and delicious mushroom risotto that is the perfect comfort food. Serve with parmesan cheese!</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <span><i class="fas fa-clock"></i> 35 minutes</span>
+                <span><i class="fas fa-leaf"></i> Vegan</span>
+              </div>
+              <a href="recipe-detail.html" class="btn btn-primary mt-3">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pagination -->
+      <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-5 bg-light">
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="newsletter-container bg-white p-4 p-md-5 rounded-4 shadow-sm">
+            <h2 class="fw-bold mb-3">Get Weekly Recipe Updates</h2>
+            <p class="text-muted mb-4">Subscribe to our newsletter and never miss a delicious recipe again!</p>
+            <form class="newsletter-form">
+              <div class="input-group mb-3">
+                <input type="email" class="form-control form-control-lg" placeholder="Your email address" aria-label="Email">
+                <button class="btn btn-danger px-4" type="submit">Subscribe</button>
+              </div>
+              <div class="form-check text-start">
+                <input class="form-check-input" type="checkbox" value="" id="newsletterCheck">
+                <label class="form-check-label small text-muted" for="newsletterCheck">
+                  I agree to receive weekly recipe updates and cooking tips.
+                </label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">Tasty Delights</h5>
+          <p>Your source for the best and delicious recipes. We have recipes for every occasion and taste.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="mb-3">Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-decoration-none text-secondary">Home</a></li>
+            <li><a href="all-recipes.html" class="text-decoration-none text-secondary">All Recipes</a></li>
+            <li><a href="categories.html" class="text-decoration-none text-secondary">Categories</a></li>
+            <li><a href="about.html" class="text-decoration-none text-secondary">About Us</a></li>
+            <li><a href="contact.html" class="text-decoration-none text-secondary">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="mb-3">Categories</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none text-secondary">Featured Recipes</a></li>
+            <li><a href="#" class="text-decoration-none text-secondary">Breakfast</a></li>
+            <li><a href="#" class="text-decoration-none text-secondary">Desserts</a></li>
+            <li><a href="#" class="text-decoration-none text-secondary">Vegetarian</a></li>
+            <li><a href="#" class="text-decoration-none text-secondary">Non-Vegetarian</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="mb-3">Newsletter</h5>
+          <p>Subscribe for the latest recipes and cooking tips</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Your email">
+            <button class="btn btn-danger" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center">
+        <p class="mb-0">© 2023 Tasty Delights. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn btn-danger btn-icon"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script src="js/scripts.js"></script>
+
+  <!-- Recipe Modal -->
+  <div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="recipeModalLabel">Recipe Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5 id="modalRecipeTitle"></h5>
+          <p id="modalRecipeDescription"></p>
+          <p><strong>Cooking Time:</strong> <span id="modalCookingTime"></span> minutes</p>
+          <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewRecipeButtons = document.querySelectorAll('.btn-primary');
+
+      viewRecipeButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          const card = button.closest('.card');
+          const title = card.querySelector('.card-title').textContent;
+          const description = card.querySelector('.card-text').textContent;
+          const cookingTime = card.querySelector('.fa-clock').nextSibling.textContent.trim();
+          const category = card.querySelector('.fa-leaf, .fa-fish, .fa-drumstick-bite').nextSibling.textContent.trim();
+
+          const newTab = window.open('', '_blank');
+          newTab.document.write(`
+            <html>
+              <head>
+                <title>${title} - Recipe Details</title>
+                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+              </head>
+              <body>
+                <div class='container mt-5'>
+                  <h1>${title}</h1>
+                  <p>${description}</p>
+                  <p><strong>Cooking Time:</strong> ${cookingTime} minutes</p>
+                  <p><strong>Category:</strong> ${category}</p>
+                  <button onclick='window.close()' class='btn btn-secondary mt-3'>Close</button>
+                </div>
+              </body>
+            </html>
+          `);
+          newTab.document.close();
+        });
+      });
+
+      const searchInput = document.querySelector('.input-group input');
+      const searchButton = document.querySelector('.input-group button');
+      const recipeCards = document.querySelectorAll('.card');
+
+      searchButton.addEventListener('click', function() {
+        const query = searchInput.value.toLowerCase();
+        recipeCards.forEach(card => {
+          const title = card.querySelector('.card-title').textContent.toLowerCase();
+          if (title.includes(query)) {
+            card.parentElement.style.display = 'block';
+          } else {
+            card.parentElement.style.display = 'none';
+          }
+        });
+      });
+
+      searchInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+          searchButton.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
