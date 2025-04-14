@@ -230,7 +230,7 @@
         <!-- Recipe Card 1 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/pasta.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/pasta.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Spicy Pasta</h5>
               <p class="card-text flex-grow-1">A spicy and delicious pasta that will tantalize your taste buds. Make your day exciting with this fiery dish!</p>
@@ -246,7 +246,7 @@
         <!-- Recipe Card 2 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/chocolate-cake.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/chocolate-cake.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Chocolate Cake</h5>
               <p class="card-text flex-grow-1">A soft and luscious chocolate cake that melts in every bite. A perfect dessert that everyone will love!</p>
@@ -262,7 +262,7 @@
         <!-- Recipe Card 3 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/garilled-salmon.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/garilled-salmon.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Grilled Salmon</h5>
               <p class="card-text flex-grow-1">Healthy and flavorful grilled salmon with fresh herbs and lemon. Enjoy a healthy meal!</p>
@@ -278,7 +278,7 @@
         <!-- Recipe Card 4 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/vegitable curry.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/vegitable curry.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Vegetable Curry</h5>
               <p class="card-text flex-grow-1">A spicy and nutritious vegetable curry full of traditional flavors. Serve it with hot rice or naan!</p>
@@ -294,7 +294,7 @@
         <!-- Recipe Card 5 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/avocado-toast.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/avocado-toast.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Avocado Toast</h5>
               <p class="card-text flex-grow-1">Healthy and tasty avocado toast perfect for breakfast or lunch. A quick and easy delicious dish!</p>
@@ -310,7 +310,7 @@
         <!-- Recipe Card 6 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/chicken-stir-fry.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/chicken-stir-fry.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Chicken Stir Fry</h5>
               <p class="card-text flex-grow-1">A quick-cooking chicken stir fry with fresh vegetables and a delicious sauce. A nutritious meal ready in no time!</p>
@@ -326,7 +326,7 @@
         <!-- Recipe Card 7 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/blueberry-pancakes.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/blueberry-pancakes.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Blueberry Pancakes</h5>
               <p class="card-text flex-grow-1">Soft and fluffy blueberry pancakes perfect for starting the morning. Serve with maple syrup!</p>
@@ -342,7 +342,7 @@
         <!-- Recipe Card 8 -->
         <div class="col">
           <div class="card h-100 shadow">
-            <img src="./recipe img/rec-img/Mashroom risotto.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
+            <img src="./recipe-img/rec-img/Mashroom risotto.png" class="card-img-top" alt="Demo Image" style="height: 200px; object-fit: cover;">
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">Mushroom Risotto</h5>
               <p class="card-text flex-grow-1">Creamy and delicious mushroom risotto that is the perfect comfort food. Serve with parmesan cheese!</p>
@@ -490,7 +490,8 @@
           const title = card.querySelector('.card-title').textContent;
           const description = card.querySelector('.card-text').textContent;
           const cookingTime = card.querySelector('.fa-clock').nextSibling.textContent.trim();
-          const category = card.querySelector('.fa-leaf, .fa-fish, .fa-drumstick-bite').nextSibling.textContent.trim();
+          const categoryIcon = card.querySelector('.fa-leaf, .fa-fish, .fa-drumstick-bite');
+          const category = categoryIcon ? categoryIcon.nextSibling.textContent.trim() : 'N/A';
 
           const newTab = window.open('', '_blank');
           newTab.document.write(`
@@ -538,4 +539,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
