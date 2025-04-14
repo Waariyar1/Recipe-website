@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     duration: 800,
     easing: 'ease-in-out',
     once: true,
-    mirror: false
+    mirror: false,
   });
 
   // Initialize Back to Top Button
@@ -13,12 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Google Translate
   loadGoogleTranslateScript();
+
+  // Initialize Recipe Ratings
+  initRecipeRatings();
+
+  // Initialize Newsletter Form
+  initNewsletterForm();
 });
 
 // Initialize Back To Top Button
 function initBackToTop() {
   const backToTopButton = document.getElementById('backToTop');
-  
+
   if (backToTopButton) {
     // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
@@ -33,7 +39,7 @@ function initBackToTop() {
     backToTopButton.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     });
   }
@@ -42,7 +48,9 @@ function initBackToTop() {
 // Toggle Menu for Mobile
 function toggleMenu() {
   const navLinks = document.querySelector('.nav-links');
-  navLinks.classList.toggle('active');
+  if (navLinks) {
+    navLinks.classList.toggle('active');
+  }
 }
 
 // Print Recipe
@@ -92,69 +100,78 @@ function loadGoogleTranslateScript() {
   const script = document.createElement('script');
   script.src = 'https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate';
   script.async = true;
+  script.onerror = () => {
+    console.error('Failed to load Google Translate script.');
+  };
   document.body.appendChild(script);
 }
 
 // Recipe Rating Interaction
 function initRecipeRatings() {
   const ratingStars = document.querySelectorAll('.recipe-rating i');
-  
-  ratingStars.forEach(star => {
-    star.addEventListener('mouseover', function() {
-      // Get all stars in this rating
-      const parentRating = this.parentElement;
-      const stars = parentRating.querySelectorAll('i');
-      const currentIndex = Array.from(stars).indexOf(this);
-      
-      // Add hover class to current and previous stars
-      for (let i = 0; i <= currentIndex; i++) {
-        stars[i].classList.add('star-hover');
-      }
+
+  if (ratingStars.length > 0) {
+    ratingStars.forEach((star) => {
+      star.addEventListener('mouseover', function () {
+        // Get all stars in this rating
+        const parentRating = this.parentElement;
+        const stars = parentRating.querySelectorAll('i');
+        const currentIndex = Array.from(stars).indexOf(this);
+
+        // Add hover class to current and previous stars
+        for (let i = 0; i <= currentIndex; i++) {
+          stars[i].classList.add('star-hover');
+        }
+      });
+
+      star.addEventListener('mouseout', function () {
+        // Remove hover class from all stars
+        const parentRating = this.parentElement;
+        const stars = parentRating.querySelectorAll('i');
+
+        stars.forEach((s) => s.classList.remove('star-hover'));
+      });
+
+      star.addEventListener('click', function () {
+        // Handle click (e.g., submit rating)
+        alert('Thank you for rating this recipe!');
+      });
     });
-    
-    star.addEventListener('mouseout', function() {
-      // Remove hover class from all stars
-      const parentRating = this.parentElement;
-      const stars = parentRating.querySelectorAll('i');
-      
-      stars.forEach(s => s.classList.remove('star-hover'));
-    });
-    
-    star.addEventListener('click', function() {
-      // Handle click (e.g., submit rating)
-      alert('Thank you for rating this recipe!');
-    });
-  });
+  }
 }
 
 // Newsletter Form Submission
-document.addEventListener('DOMContentLoaded', () => {
+function initNewsletterForm() {
   const newsletterForm = document.querySelector('.newsletter-form');
-  
+
   if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
+    newsletterForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      
+
       const emailInput = this.querySelector('input[type="email"]');
       const checkboxInput = this.querySelector('input[type="checkbox"]');
-      
+
+      if (!emailInput || !checkboxInput) {
+        alert('Form elements are missing.');
+        return;
+      }
+
       if (emailInput.value.trim() === '') {
         alert('Please enter your email address.');
         return;
       }
-      
+
       if (!checkboxInput.checked) {
         alert('Please agree to receive updates.');
         return;
       }
-      
+
       // Normally we would submit to a server here
       alert('Thank you for subscribing to our newsletter!');
       emailInput.value = '';
       checkboxInput.checked = false;
     });
   }
-  
-  // Initialize recipe ratings
-  initRecipeRatings();
-});
+}
+
+

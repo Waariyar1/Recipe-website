@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Categories - Tasty Delights</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-utensils text-danger me-2"></i>
+        <span class="fw-bold">Tasty Delights</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="all-recipes.html">All Recipes</a></li>
+          <li class="nav-item"><a class="nav-link active" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="bg-light py-5">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Recipe Categories</h1>
+      <p class="lead">Explore recipes by category and find your next favorite dish!</p>
+    </div>
+  </header>
+
+  <!-- Categories Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Category 1 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./category-img/desserts.jpg" class="card-img-top" alt="Desserts" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Desserts</h5>
+              <p class="card-text">Indulge in sweet treats and delicious desserts.</p>
+              <a href="all-recipes.html#desserts" class="btn btn-danger">View Recipes</a>
+            </div>
+          </div>
+        </div>
+        <!-- Category 2 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./category-img/vegan.jpg" class="card-img-top" alt="Vegan" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Vegan</h5>
+              <p class="card-text">Discover healthy and delicious vegan recipes.</p>
+              <a href="all-recipes.html#vegan" class="btn btn-danger">View Recipes</a>
+            </div>
+          </div>
+        </div>
+        <!-- Category 3 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./category-img/snacks.jpg" class="card-img-top" alt="Snacks" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Snacks</h5>
+              <p class="card-text">Quick and easy snacks for any time of the day.</p>
+              <a href="all-recipes.html#snacks" class="btn btn-danger">View Recipes</a>
+            </div>
+          </div>
+        </div>
+        <!-- Category 4 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./category-img/main-course.jpg" class="card-img-top" alt="Main Course" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Main Course</h5>
+              <p class="card-text">Hearty and satisfying main course recipes.</p>
+              <a href="all-recipes.html#main-course" class="btn btn-danger">View Recipes</a>
+            </div>
+          </div>
+        </div>
+        <!-- Category 5 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./category-img/beverages.jpg" class="card-img-top" alt="Beverages" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Beverages</h5>
+              <p class="card-text">Refreshing drinks and beverages for every occasion.</p>
+              <a href="all-recipes.html#beverages" class="btn btn-danger">View Recipes</a>
+            </div>
+          </div>
+        </div>
+        <!-- Category 6 -->
+        <div class="col">
+          <div class="card h-100 shadow">
+            <img src="./category-img/appetizers.jpg" class="card-img-top" alt="Appetizers" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+              <h5 class="card-title">Appetizers</h5>
+              <p class="card-text">Start your meal with these tasty appetizers.</p>
+              <a href="all-recipes.html#appetizers" class="btn btn-danger">View Recipes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer bg-dark text-white py-4">
+    <div class="container text-center">
+      <p class="mb-0">© 2025 Tasty Delights. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn btn-danger btn-icon"><i class="fas fa-chevron-up"></i></button>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Back to Top Button
+      const backToTopButton = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTopButton.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
